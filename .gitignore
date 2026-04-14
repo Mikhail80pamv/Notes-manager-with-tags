@@ -1,0 +1,18 @@
+# Виртуальное окружение
+venv/
+.venv/
+
+# База данных SQLite
+*.db
+app.db
+
+# Файлы конфигурации с секретами
+.env
+
+# Файлы IDE
+.idea/
+.vscode/
+
+# Кэш Python
+__pycache__/
+*.pyc

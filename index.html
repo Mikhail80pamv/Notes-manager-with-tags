@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>{% if current_user.is_authenticated %}Мои заметки{% else %}Добро пожаловать в Notes App{% endif %}</h1>
+    {% if current_user.is_authenticated %}
+        <p>Здесь собраны все ваши заметки.</p>
+        {% if tag_filter %}
+            <p>Фильтр по тегу: <span class="badge bg-primary">{{ tag_filter }}</span> <a href="{{ url_for('main.index') }}" class="btn btn-sm btn-outline-secondary">Сбросить</a></p>
+        {% endif %}
+        {% if notes %}
+            <div class="row">
+                {% for note in notes %}
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"><a href="{{ url_for('main.note_detail', note_id=note.id) }}">{{ note.title }}</a></h5>
+                                <p class="card-text">{{ note.body[:100] }}{% if note.body|length > 100 %}...{% endif %}</p>
+                                <p class="card-text">
+                                    <small class="text-muted">Обновлено: {{ note.updated_at.strftime('%d.%m.%Y %H:%M') }}</small>
+                                </p>
+                                {% if note.tags %}
+                                    <p>
+                                        {% for tag in note.get_tags_list() %}
+                                            <a href="{{ url_for('main.index', tag=tag) }}" class="badge bg-secondary text-decoration-none">{{ tag }}</a>
+                                        {% endfor %}
+                                    </p>
+                                {% endif %}
+                                <a href="{{ url_for('main.note_detail', note_id=note.id) }}" class="btn btn-sm btn-outline-primary">Читать</a>
+                                <a href="{{ url_for('main.edit_note', note_id=note.id) }}" class="btn btn-sm btn-outline-secondary">Изменить</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>У вас пока нет заметок. <a href="{{ url_for('main.new_note') }}">Создайте первую!</a></p>
+        {% endif %}
+    {% else %}
+        <p>Это простой менеджер заметок. <a href="{{ url_for('main.register') }}">Зарегистрируйтесь</a> или <a href="{{ url_for('main.login') }}">войдите</a>, чтобы начать.</p>
+    {% endif %}
+{% endblock %}
