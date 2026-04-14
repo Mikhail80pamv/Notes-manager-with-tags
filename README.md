@@ -36,14 +36,17 @@ python -m venv venv
 venv\Scripts\activate
 # Linux/macOS
 source venv/bin/activate
+
 Установите зависимости:
 
 bash
 pip install -r requirements.txt
+
 Запустите приложение:
 
 bash
 python run.py
+
 Откройте браузер и перейдите по адресу http://127.0.0.1:5000.
 
 📸 Скриншоты
