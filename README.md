@@ -1,6 +1,6 @@
 # 📝 Notes Manager with Tags
 
-**Автор:** [Ваше Имя] — **Junior Python Developer (Backend / Telegram Bots)**  
+**Автор:** [Mikhail] — **Junior Python Developer (Backend / Telegram Bots)**  
 [![GitHub](https://img.shields.io/badge/GitHub-ваш_логин-blue?logo=github)](https://github.com/ваш_логин)
 
 Веб-приложение для управления личными заметками с поддержкой тегов. Реализована регистрация пользователей, создание, редактирование, удаление заметок и фильтрация по тегам. Проект демонстрирует навыки backend-разработки на Flask, работы с базами данных и создания RESTful-подобных маршрутов.
